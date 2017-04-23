@@ -1,0 +1,42 @@
+.header {
+	height: 60px;
+	background: linear-gradient(#333, #000);
+	display: flex;
+	align-items: center;
+
+	.header__logo {
+	  background-image: url(../img/sprite_nav.png);
+	  background-position: -288px -390px;
+	  width: 87px;
+	  height: 38px;
+	  margin-left: 210 / 1366 * 100%;
+	  margin-right: 10px;
+	}
+
+	.header__nav {
+		display: flex;
+		align-items: center;
+	}
+
+	.header__nav__items {
+		color: $text-color;
+		padding: 12.5px 10px;
+		margin-left: 2px;
+		height: auto;
+		border-right: 2px solid $dark__color;
+	}
+
+	.header__nav__items:hover {
+		color: #fff;
+		background: $dark__color;
+		border-top: 2px solid $color-brand;
+	}
+
+	.header__banner {
+		background-image: url(../img/sprite_nav.png);
+		background-position: -394px -375px;
+		width: 66px;
+		height: 94px;
+		margin-left: 220 / 1366 * 100%;
+	}
+}

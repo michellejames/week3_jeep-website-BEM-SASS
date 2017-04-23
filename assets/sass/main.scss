@@ -1,0 +1,55 @@
+/* 
+==============================================
+CONTENT:	Project Name Here
+AUTHOR:		Your Name Here
+==============================================
+
+TABLE OF CONTENTS:
+
+1. Main Layout
+2. Content
+
+==============================================
+*/
+
+
+
+/* 1. Main Layout ================================= */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+$text-color: #7E8386; // Grey
+$dark__color: black; //black
+$color-brand: #ffb302; // Gold
+$color-accent: #ff9d01; // Darker Gold
+
+@import "header";
+@import "carousel";
+@import "footer";
+
+
+
+.hero {
+	display: flex;
+	height: 740 / 1282 * 100%;
+
+	.hero__slideshow {
+		// box-sizing: content-box;
+		margin: 0 auto;
+		width: 100%;
+		height: 740 / 1282 * 100%;
+
+	}
+
+}
+
+
+
+
+
