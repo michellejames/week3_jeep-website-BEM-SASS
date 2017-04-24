@@ -20,8 +20,8 @@ html, body {
   height: 100%; }
 
 .header {
-  height: 60px;
   background: linear-gradient(#333, #000);
+  height: 60px;
   display: flex;
   align-items: center;
   z-index: 5; }

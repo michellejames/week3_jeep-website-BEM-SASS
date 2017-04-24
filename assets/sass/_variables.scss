@@ -3,8 +3,18 @@ $dark__color: #000; //black
 $color-brand: #ffb302; // Gold
 $color-accent: #ff9d01; // Darker Gold
 
+
+@mixin headerGradient {
+	background: linear-gradient(#333, #000);
+
+}
 @mixin centerFlex {
 	display:flex;
 	justify-content:center;
 	align-items:center;
+}
+
+@mixin footerGradient {
+	background: linear-gradient(#222, #111);
+
 }

@@ -1,5 +1,5 @@
 .footer {
-	background: linear-gradient(#222, #111);
+	@include footerGradient;
 	border-top: 1px solid #444;
 	padding: 20px 0;
 
