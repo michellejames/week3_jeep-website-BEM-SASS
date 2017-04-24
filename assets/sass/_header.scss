@@ -3,19 +3,21 @@
 	background: linear-gradient(#333, #000);
 	display: flex;
 	align-items: center;
+	z-index: 5;
 
 	.header__logo {
-	  background-image: url(../img/sprite_nav.png);
-	  background-position: -288px -390px;
-	  width: 87px;
-	  height: 38px;
-	  margin-left: 210 / 1366 * 100%;
-	  margin-right: 10px;
+		position: absolute;
+		background-image: url(../img/sprite_nav.png);
+		background-position: -288px -390px;
+		width: 87px;
+		height: 38px;
+		margin-left: 210 / 1366 * 100%;
 	}
 
 	.header__nav {
 		display: flex;
 		align-items: center;
+	  margin-left: 320 / 1366 * 100%;
 	}
 
 	.header__nav__items {
@@ -33,10 +35,11 @@
 	}
 
 	.header__banner {
+		position: absolute;
 		background-image: url(../img/sprite_nav.png);
 		background-position: -394px -375px;
 		width: 66px;
 		height: 94px;
-		margin-left: 220 / 1366 * 100%;
+		margin-left: 1085 / 1366 * 100%;
 	}
 }

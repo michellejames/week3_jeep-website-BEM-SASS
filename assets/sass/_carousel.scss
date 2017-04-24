@@ -1,7 +1,38 @@
-.hero__slideshow {
-	box-sizing: content-box;
-	margin: 0 auto;
-	width: 600px;
-	height: 400px;
+.hero {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background-image: url(../img/feature-1-bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.hero__boxes {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 15px;
+	color: #9A9A9A;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.hero__boxes__1 {
+	@include centerFlex;
+	width: 430px;
+	height: 200px;
+	background: #fff;
+	border: 2px solid black;
+}
+
+.hero__boxes__2,
+.hero__boxes__3 {
+	@include centerFlex;
+	width: 310px;
+	height: 200px;
+	background: #fff;
 	border: 2px solid black;
 }

@@ -1,7 +1,7 @@
 /* 
 ==============================================
-CONTENT:	Project Name Here
-AUTHOR:		Your Name Here
+CONTENT:	Jeep Website
+AUTHOR:		Michelle James
 ==============================================
 
 TABLE OF CONTENTS:
@@ -11,50 +11,86 @@ TABLE OF CONTENTS:
 
 ==============================================
 */
-/* 1. Main Layout ================================= */
 * {
   box-sizing: border-box; }
 
-body {
-  font-family: Arial, Helvetica, sans-serif; }
+html, body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%; }
 
 .header {
   height: 60px;
   background: linear-gradient(#333, #000);
   display: flex;
-  align-items: center; }
+  align-items: center;
+  z-index: 5; }
   .header .header__logo {
+    position: absolute;
     background-image: url(../img/sprite_nav.png);
     background-position: -288px -390px;
     width: 87px;
     height: 38px;
-    margin-left: 15.37335%;
-    margin-right: 10px; }
+    margin-left: 15.37335%; }
   .header .header__nav {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    margin-left: 23.42606%; }
   .header .header__nav__items {
     color: #7E8386;
     padding: 12.5px 10px;
     margin-left: 2px;
     height: auto;
-    border-right: 2px solid black; }
+    border-right: 2px solid #000; }
   .header .header__nav__items:hover {
     color: #fff;
-    background: black;
+    background: #000;
     border-top: 2px solid #ffb302; }
   .header .header__banner {
+    position: absolute;
     background-image: url(../img/sprite_nav.png);
     background-position: -394px -375px;
     width: 66px;
     height: 94px;
-    margin-left: 16.10542%; }
+    margin-left: 79.42899%; }
 
-.hero__slideshow {
-  box-sizing: content-box;
-  margin: 0 auto;
-  width: 600px;
-  height: 400px;
+.hero {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/feature-1-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.hero__boxes {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 15px;
+  color: #9A9A9A;
+  font-weight: bold;
+  font-size: 2em; }
+
+.hero__boxes__1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 430px;
+  height: 200px;
+  background: #fff;
+  border: 2px solid black; }
+
+.hero__boxes__2,
+.hero__boxes__3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 310px;
+  height: 200px;
+  background: #fff;
   border: 2px solid black; }
 
 .footer {
@@ -69,7 +105,7 @@ body {
     margin-right: 8.41874%; }
   .footer .footer__items {
     font-size: 11px;
-    line-height: 15px;
+    line-height: 20px;
     color: #7E8386; }
   .footer .footer__items--first {
     font-size: 12px;
@@ -84,13 +120,5 @@ body {
     line-height: 20px;
     margin-left: 8.41874%;
     margin-right: 8.41874%; }
-
-.hero {
-  display: flex;
-  height: 57.72231%; }
-  .hero .hero__slideshow {
-    margin: 0 auto;
-    width: 100%;
-    height: 57.72231%; }
 
 /*# sourceMappingURL=main.css.map */
