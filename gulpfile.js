@@ -1,43 +1,75 @@
-// all the node modules we need
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
-var browserSync = require('browser-sync').create();
+var gulp = require("gulp"),
+	jshint = require("gulp-jshint"),
+	uglify = require("gulp-uglify"),
+	rename = require("gulp-rename"),
+	concat = require("gulp-concat"),
+	del = require("del"),
+	scss = require("gulp-sass"),
+	sourcemaps = require("gulp-sourcemaps"),
+	cssnano = require("gulp-cssnano"),
+	autoprefixer = require("gulp-autoprefixer");
 
-
-
-
-// this task takes sass files and compiles them
-gulp.task('sass', function () {
-	return gulp.src('./assets/sass/**/*.scss') // run over these files
-		.pipe(sourcemaps.init()) // make sourcemaps for chrome devtools
-		.pipe(sass().on('error', sass.logError)) // on errors, show them
-		.pipe(sourcemaps.write('./')) // put the sourcemaps with the css files
-		.pipe(gulp.dest('./assets/css')) // put the css files here.
-        //.pipe(browserSync.stream()); // tell browsersync to send over the changes
+var browserSync = require("browser-sync").create();
+gulp.task("browserSync", function () {
+	browserSync.init({
+		server: {
+			baseDir: "."
+		}
+	});
 });
 
-
-
-// this task looks through js files for errors
-gulp.task('lint', function () {
-	return gulp.src('./assets/js/**/*.js') // watch these files
-		.pipe(jshint()) // error ceck the files
-		.pipe(jshint.reporter('jshint-stylish'/*, {beep: true}*/)); // if there are errors, show them
+gulp.task("styles", function () {
+	return gulp.src("src/scss/**/*.scss")
+	.pipe(sourcemaps.init())
+	.pipe(scss())
+	.pipe(sourcemaps.write())
+	.pipe(autoprefixer("last 4 version"))
+	.pipe(gulp.dest("assets/css"))
+	.pipe(browserSync.reload({stream: true}));
 });
 
+gulp.task("styles-min",  ["styles"], function () {
+	return gulp.src("assets/css/main.css")
+	.pipe(sourcemaps.init())
+	.pipe(cssnano())
+	.pipe(rename({suffix: ".min"}))
+	.pipe(sourcemaps.write())
+	.pipe(gulp.dest("assets/css"))
+	.pipe(browserSync.reload({stream: true}));
 
+})
 
-gulp.task('default', function() { // running `gulp` runs this task. this task sort of branches off into the others as needed
+gulp.task("scripts", function (){
+	return gulp.src("src/js/**/*.js")
+	.pipe(jshint())
+	.pipe(jshint.reporter("default"))
+	.pipe(sourcemaps.init())
+	.pipe(concat("all.js"))
+	.pipe(sourcemaps.write())
+	.pipe(gulp.dest("assets/js"));
+})
 
-	browserSync.init({ // start the browsersync mini-server
-        server: "./" // on the root of the project
-    });
+gulp.task("scripts-min", ["scripts"], function (){
+	return gulp.src("assets/js/all.js")
+	.pipe(sourcemaps.init())
+	.pipe(rename({suffix: ".min"}))
+	.pipe(uglify())							//minify code
+	.pipe(sourcemaps.write())
+	.pipe(gulp.dest("assets/js"));
 
-	gulp.watch('./assets/sass/**/*.scss', ['sass']); // watch sass files. if they change, run the task called "sass"
-	gulp.watch('./assets/js/**/*.js', ['lint']); // watch js files. if they change, run the task called "lint"
-    gulp.watch("./**/*.html").on('change', browserSync.reload); // watch all top level files and reload if they change
-    gulp.watch("./assets/**/*.*").on('change', browserSync.reload); // watch all assets and reload if they change
+})
+
+gulp.task("clean", function () {
+	return del (["assets/js", "assets/css"]);
+})
+
+gulp.task("hi", function () {
+	console.log("Hi There");
+});
+
+gulp.task("default", ["clean", "styles-min", "scripts-min"]);
+
+gulp.task("watch", ["clean", "styles-min", "scripts-min", "browserSync"], function () {
+	gulp.watch("src/scss/**/*.scss", ["styles-min"]);
+	gulp.watch("src/js/**/*.js", ["scripts-min"]);
 });
